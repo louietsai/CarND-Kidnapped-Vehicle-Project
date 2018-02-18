@@ -111,8 +111,17 @@ int main()
         	}
 
 		  // Update the weights and resample
+                  cout << "Dump Before update weights"<< endl;
+                  pf.dumpParticles();
+                  cout << endl;
 		  pf.updateWeights(sensor_range, sigma_landmark, noisy_observations, map);
+                  cout << "Dump After update weights"<< endl;
+                  pf.dumpParticles();
+                  cout << endl;
 		  pf.resample();
+                  cout << "Dump After resample"<< endl;
+                  pf.dumpParticles();
+                  cout << endl;
 
 		  // Calculate and output the average weighted error of the particle filter over all time steps so far.
 		  vector<Particle> particles = pf.particles;
