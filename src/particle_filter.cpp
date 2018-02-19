@@ -24,11 +24,11 @@ void ParticleFilter::init(double x, double y, double theta, double std[]) {
 	//   x, y, theta and their uncertainties from GPS) and all weights to 1.
 	// Add random Gaussian noise to each particle.
 	// NOTE: Consult particle_filter.h for more information about this method (and others in this file).
-	/* Init every particle. 
+	/* Init every particle.
 	   assign x, y, theta with a value from normal distribution
-	   assign 1 as initial weight 
+	   assign 1 as initial weight
 	*/
-	num_particles = 20;
+	num_particles = 500;
 	default_random_engine gen;
 
 	normal_distribution<double> distributionX(x, std[0]);
@@ -90,7 +90,7 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
 
 	  particles[i].x = distributionX(gen);
 	  particles[i].y = distributionY(gen);
-	  particles[i].theta = distributionTheta(gen);  
+	  particles[i].theta = distributionTheta(gen);
 	}
 }
 
@@ -148,7 +148,6 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     double pX = particles[i].x;
     double pY = particles[i].y;
     double pTheta = particles[i].theta;
-
 
     /*Step 1: Transform observations from vehicle co-ordinates to map co-ordinates.
 	using Homogenous Transformation
@@ -213,6 +212,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
   }
 
   /*Step 5: Normalize the weights of all particles.*/
+  #pragma omp for
   for (int i = 0; i < particles.size(); i++) {
     particles[i].weight /= wNormalizer;
     weights[i] = particles[i].weight;
