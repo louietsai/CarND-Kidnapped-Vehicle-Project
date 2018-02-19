@@ -55,7 +55,7 @@ many tests with different number of particles are conducted. the system time kee
 
 ![result][RS]
 
-Due to some running latency requirements for this particle filter program, I also used a profiler to identify some hotspot functions.
+Due to sensitivity for running latency, I also used a profiler to identify some hotspot functions.
 the main 2 top hotspot functions are:
 ParticleFilter::updateWeights (used  8% of total CPU time)
 ParticleFilter::dataAssociation (used  5% of total CPU time)
