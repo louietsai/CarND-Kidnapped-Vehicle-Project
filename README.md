@@ -2,6 +2,7 @@
 [FC]: ./data/no-log/flow_chart.png
 [P20]: ./data/no-log/20.png
 [P2000]: ./data/no-log/2000p.png
+[RS]: ./data/no-log/results.png
 [VT]: ./data/no-log/vtune.png
 # Overview
 This repository contains all the code needed to complete the final project for the Localization course in Udacity's Self-Driving Car Nanodegree.
@@ -40,11 +41,19 @@ Global map of environment is initialized. This map is represented by a list x an
 After prediction step, the vehicle implements Update step. In this step, particles are assigned with weights corresponding to their prediction.
 
 ## Project Results
+couple tests were done for different number of particles. Some hotspot functions are also identifed via a perf profiler.
+
+here is a result for a test with 20 particles 
 
 ![20 particles][P20]
 
+here is a result for a test with 2000 particle
+
 ![2000 paricles][P2000]
 
+many tests with different number of particles are conducted. the system time doesn't increase when there are few than 500 partciles,and the error rate doesn't decrease too much with > 500 particles. nearest neighbor algorithms may not work well when there are too many particles, so I used 500 particles in the end.
+
+![result][RS]
 
 ![profiling_result][VT]
 
