@@ -55,8 +55,16 @@ many tests with different number of particles are conducted. the system time doe
 
 ![result][RS]
 
+Due to some running latency requirements for this particle filter program, I also used a profiler to identify some hotspot functions.
+the main 2 top hotspot functions are:
+ParticleFilter::updateWeights (used  8% of total CPU time)
+ParticleFilter::dataAssociation (used  5% of total CPU time)
+
+moreover, the program uses single-thread for computation as below diagram for a profiler.
+
 ![profiling_result][VT]
 
+Therefore, may try to accelerate the performance by mulit-threading those two hotspot functions as the next step.
 
 ## Running the Code
 This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases)
