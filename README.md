@@ -51,7 +51,7 @@ here is a result for a test with 2000 particle
 
 ![2000 paricles][P2000]
 
-many tests with different number of particles are conducted. the system time doesn't increase when there are few than 500 partciles,and the error rate doesn't decrease too much with > 500 particles. nearest neighbor algorithms may not work well when there are too many particles, so I used 500 particles in the end.
+many tests with different number of particles are conducted. the system time keeps within 48.8sec when there are few than 500 partciles,and the error rate doesn't improve too much with > 500 particles. nearest neighbor algorithms may not work well when there are too many particles, so I used 500 particles in the end.
 
 ![result][RS]
 
