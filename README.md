@@ -1,7 +1,7 @@
 [//]: # (Image References) 
 [FC]: ./data/no-log/flow_chart.png
 [P20]: ./data/no-log/20.png
-[P2000]: ./data/no-log/2000.png
+[P2000]: ./data/no-log/2000p.png
 [VT]: ./data/no-log/vtune.png
 # Overview
 This repository contains all the code needed to complete the final project for the Localization course in Udacity's Self-Driving Car Nanodegree.
