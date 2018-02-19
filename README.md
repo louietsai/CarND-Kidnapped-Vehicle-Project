@@ -45,6 +45,16 @@ After prediction step, the vehicle implements Update step. In this step, particl
 
 ![2000 paricles][P2000]
 
+number of particles 	system times	X error	Y error 	yaw error
+10	48.86	0.177	0.149	0.06
+20	48.88	0.133	0.127	0.05
+30	48.88	0.137	0.122	0.05
+100	48.88	0.114	0.106	0.04
+*500	48.88	0.107	0.102	0.04
+1000	51.6	0.109	0.1	0.04
+1500	63.94	0.109	0.1	0.04
+2000	87.74	0.109	0.97	0.04
+
 ![profiling_result][VT]
 
 
