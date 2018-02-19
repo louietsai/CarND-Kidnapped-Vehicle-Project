@@ -1,3 +1,6 @@
+[//]: # (Image References) 
+[FC]: ./data/no-log/flow_chart.png
+[P20]: ./data/no-log/flow_chart.png
 # Overview
 This repository contains all the code needed to complete the final project for the Localization course in Udacity's Self-Driving Car Nanodegree.
 
@@ -7,12 +10,18 @@ Your robot has been kidnapped and transported to a new location! Luckily it has 
 ## Project Implementation
 The C++ program for localization was implemented using following major steps:
 
-1. A noisy measurement from GPS sensor was received and used to initialize the position of vehicle. This measurement included the x coordinate, y coordinate (both in m) and the theta (orientation) of vehicle in radian. Noise is modelled by Gaussian distribution with standard deviation in x, y and theta provided as a part of GPS uncertainty specification. Particle filter algorithm uses particles to represent the location of vehicle. Hence, in this case, 20 particles were created and initialized to locations taken from normal distribution with mean equal to the location received from GPS and standard deviation equal to the GPS measurement uncertainty. The number of particles was a tunable parameter and was chosen after multiple iterations described in later steps of implementation.
+![Flow Chart][FC]
 
-2. Global map of environment is initialized. This map is represented by a list x and y coordinates of landmarks in the environment.
+#### 1. Initializatoin :
+A noisy measurement from GPS sensor was received and used to initialize the position of vehicle. This measurement included the x coordinate, y coordinate (both in m) and the theta (orientation) of vehicle in radian. Noise is modelled by Gaussian distribution with standard deviation in x, y and theta provided as a part of GPS uncertainty specification. Particle filter algorithm uses particles to represent the location of vehicle. Hence, in this case, 20 particles were created and initialized to locations taken from normal distribution with mean equal to the location received from GPS and standard deviation equal to the GPS measurement uncertainty. The number of particles was a tunable parameter and was chosen after multiple iterations described in later steps of implementation.
 
-3. Once map and particles are initialized, the vehicle implements Prediction step in which the location of each particle at next time step is predicted. This is done by using information of control inputs and time elapsed between time steps. The control inputs are nothing but magnitude of velocity (v) and yaw rate (θ). Location update is done with the help of formula given below:
-4. After prediction step, the vehicle implements Update step. In this step, particles are assigned with weights corresponding to their prediction. The process is stated below:
+#### 2. Prediction : 
+Global map of environment is initialized. This map is represented by a list x and y coordinates of landmarks in the environment.
+
+#### 3. Update:  
+Once map and particles are initialized, the vehicle implements Prediction step in which the location of each particle at next time step is predicted. This is done by using information of control inputs and time elapsed between time steps. The control inputs are nothing but magnitude of velocity (v) and yaw rate (θ). Location update is done with the help of formula given below:
+#### 4. Resample :  
+After prediction step, the vehicle implements Update step. In this step, particles are assigned with weights corresponding to their prediction. The process is stated below:
 ## Project Results
 
 ## Running the Code
