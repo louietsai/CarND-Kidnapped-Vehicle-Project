@@ -17,9 +17,10 @@ A noisy measurement from GPS sensor was received and used to initialize the posi
 
 #### 2. Prediction : 
 Global map of environment is initialized. This map is represented by a list x and y coordinates of landmarks in the environment. the prediction approach is used "bicycle model" with following equations.
-		xf=x0+θ˙v[sin(θ0+θ˙(dt))−sin(θ0)]
-		yf=y0+θ˙v[cos(θ0)−cos(θ0+θ˙(dt))]
-		θf=θ0+θ˙(dt)
+
+	xf=x0+θ˙v[sin(θ0+θ˙(dt))−sin(θ0)]
+	yf=y0+θ˙v[cos(θ0)−cos(θ0+θ˙(dt))]
+	θf=θ0+θ˙(dt)
 
 #### 3. Update:  
  Location update is done with the 4 steps listed in below
@@ -34,7 +35,8 @@ Global map of environment is initialized. This map is represented by a list x an
     Step 4: get the weight of each particle by Multivariate Gaussian distribution.
     Step 5: Normalize the weights of all particles.
 #### 4. Resample :  
-After prediction step, the vehicle implements Update step. In this step, particles are assigned with weights corresponding to their prediction. The process is stated below:
+After prediction step, the vehicle implements Update step. In this step, particles are assigned with weights corresponding to their prediction.
+
 ## Project Results
 
 ## Running the Code
