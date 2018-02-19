@@ -1,6 +1,8 @@
 [//]: # (Image References) 
 [FC]: ./data/no-log/flow_chart.png
-[P20]: ./data/no-log/flow_chart.png
+[P20]: ./data/no-log/20.png
+[P2000]: ./data/no-log/2000.png
+[VT]: ./data/no-log/vtune.png
 # Overview
 This repository contains all the code needed to complete the final project for the Localization course in Udacity's Self-Driving Car Nanodegree.
 
@@ -38,6 +40,13 @@ Global map of environment is initialized. This map is represented by a list x an
 After prediction step, the vehicle implements Update step. In this step, particles are assigned with weights corresponding to their prediction.
 
 ## Project Results
+
+![20 particles][P20]
+
+![2000 paricles][P2000]
+
+![profiling_result][VT]
+
 
 ## Running the Code
 This project involves the Term 2 Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases)
