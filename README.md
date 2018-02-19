@@ -13,13 +13,26 @@ The C++ program for localization was implemented using following major steps:
 ![Flow Chart][FC]
 
 #### 1. Initializatoin :
-A noisy measurement from GPS sensor was received and used to initialize the position of vehicle. This measurement included the x coordinate, y coordinate (both in m) and the theta (orientation) of vehicle in radian. Noise is modelled by Gaussian distribution with standard deviation in x, y and theta provided as a part of GPS uncertainty specification. Particle filter algorithm uses particles to represent the location of vehicle. Hence, in this case, 20 particles were created and initialized to locations taken from normal distribution with mean equal to the location received from GPS and standard deviation equal to the GPS measurement uncertainty. The number of particles was a tunable parameter and was chosen after multiple iterations described in later steps of implementation.
+A noisy measurement from GPS sensor was received and used to initialize the position of vehicle. This measurement included the x coordinate, y coordinate (both in m) and the theta (orientation) of vehicle in radian. Particle filter algorithm uses particles to represent the location of vehicle. Many (20 -2000 in my results) particles were created and initialized to locations taken from normal distribution with mean equal to the location received from GPS and standard deviation equal to the GPS measurement uncertainty. 
 
 #### 2. Prediction : 
-Global map of environment is initialized. This map is represented by a list x and y coordinates of landmarks in the environment.
+Global map of environment is initialized. This map is represented by a list x and y coordinates of landmarks in the environment. the prediction approach is used "bicycle model" with following equations.
+		xf=x0+θ˙v[sin(θ0+θ˙(dt))−sin(θ0)]
+		yf=y0+θ˙v[cos(θ0)−cos(θ0+θ˙(dt))]
+		θf=θ0+θ˙(dt)
 
 #### 3. Update:  
-Once map and particles are initialized, the vehicle implements Prediction step in which the location of each particle at next time step is predicted. This is done by using information of control inputs and time elapsed between time steps. The control inputs are nothing but magnitude of velocity (v) and yaw rate (θ). Location update is done with the help of formula given below:
+ Location update is done with the 4 steps listed in below
+    
+    Step 1: Transform observations from vehicle co-ordinates to map co-ordinates.
+	using Homogenous Transformation
+	xm=xp+(cosθ×xc)−(sinθ×yc)
+	ym=yp+(sinθ×xc)+(cosθ×yc)       
+    Step 2:  keep only map landmarks which are in the sensor_range of current
+     particle, and save them into predictions vector.     
+    Step 3: Associate observations to predicted landmarks by nearest neighbor algorithm.
+    Step 4: get the weight of each particle by Multivariate Gaussian distribution.
+    Step 5: Normalize the weights of all particles.
 #### 4. Resample :  
 After prediction step, the vehicle implements Update step. In this step, particles are assigned with weights corresponding to their prediction. The process is stated below:
 ## Project Results
